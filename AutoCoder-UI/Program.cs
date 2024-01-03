@@ -78,19 +78,13 @@ namespace AutoCoder_UI
             Now your job is to generate only the code for the file {filename}. 
             Make sure to have consistent filenames if you reference other files we are also generating.
             
-            Remember that you must obey 3 things: 
+            Remember that you must obey 4 things: 
                - you are generating code for the file {filename}
                - do not stray from the names of the files and the shared dependencies we have decided on
-               - MOST IMPORTANT OF ALL - the purpose of our app is {prompt} - every line of code you generate must be valid code. Do not include code fences in your response, for example
+               - do not generate more than 10 of any given element. if more are needed, comment in the code asking the user to do so
+               - MOST IMPORTANT OF ALL - the purpose of our app is {prompt} - every line of code you generate must be valid code. Do not include code fences in your response
             
-            Bad response:
-            ```javascript 
-            console.log(""hello world"")
-            ```
-            
-            Good response:
-            console.log(""hello world"")
-            
+           
             Begin generating the code now."
             );
 
@@ -99,12 +93,12 @@ namespace AutoCoder_UI
 
         private static void ReportTokens(string prompt)
         {
-            WriteToTextBox($"\u001b[37m{prompt.Count()} tokens\u001b[0m in prompt: \u001b[92m{prompt.Substring(0, 50)}\u001b[0m", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox($"{prompt.Count()} tokens in prompt: {prompt.Substring(0, 50)}", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
         }
 
         private static void WriteFile(string filename, string filecode, string directory)
         {
-            WriteToTextBox("\u001b[94m[" + filename + "]\u001b[0m", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox("[" + filename + "]", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
             WriteToTextBox(filecode, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
 
             var filePath = Path.Combine(directory, filename);
@@ -159,7 +153,7 @@ namespace AutoCoder_UI
             }
 
             WriteToTextBox("hi its me, 🐣the smol developer🐣! you said you wanted:", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
-            WriteToTextBox("\u001b[92m" + prompt + "\u001b[0m", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox(prompt, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
 
             var filepathsString = await GenerateResponse(
                 // Assistant content
@@ -180,7 +174,7 @@ namespace AutoCoder_UI
             try
             {
                 string jsonContent = ExtractJsonContent(filepathsString);
-                Console.WriteLine(jsonContent, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+                WriteToTextBox(jsonContent, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
 
                 listActual = JsonSerializer.Deserialize<List<string>>(jsonContent);
 
@@ -192,7 +186,7 @@ namespace AutoCoder_UI
 
                 if (file != null)
                 {
-                    Console.WriteLine("file" + file, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+                    WriteToTextBox("file" + file, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
                     var (filename, filecode) = await GenerateFile(file, filepathsString, sharedDependencies, prompt);
                     WriteFile(filename, filecode, directory);
                 }
