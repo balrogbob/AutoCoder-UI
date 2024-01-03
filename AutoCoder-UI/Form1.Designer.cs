@@ -1,0 +1,446 @@
+﻿namespace AutoCoder_UI
+{
+    partial class Form1
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            components = new System.ComponentModel.Container();
+            menuStrip1 = new MenuStrip();
+            statusStrip1 = new StatusStrip();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            toolStrip1 = new ToolStrip();
+            splitContainer1 = new SplitContainer();
+            splitContainer2 = new SplitContainer();
+            splitContainer3 = new SplitContainer();
+            button2 = new Button();
+            Console = new RichTextBox();
+            splitContainer4 = new SplitContainer();
+            OptionsTab = new TabControl();
+            tabPage1 = new TabPage();
+            label5 = new Label();
+            Connect_Timeout = new TextBox();
+            label4 = new Label();
+            API_Url = new TextBox();
+            label1 = new Label();
+            Api_Key = new TextBox();
+            buttonSaveSettings = new Button();
+            buttonLoadSettings = new Button();
+            FilesDir = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            ProjectName = new TextBox();
+            tabPage2 = new TabPage();
+            button1 = new Button();
+            UserInput = new RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer4).BeginInit();
+            splitContainer4.Panel2.SuspendLayout();
+            splitContainer4.SuspendLayout();
+            OptionsTab.SuspendLayout();
+            tabPage1.SuspendLayout();
+            SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(988, 24);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Location = new Point(0, 563);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(988, 22);
+            statusStrip1.TabIndex = 2;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // toolStrip1
+            // 
+            toolStrip1.Location = new Point(0, 24);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(988, 25);
+            toolStrip1.TabIndex = 0;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(0, 49);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(button1);
+            splitContainer1.Panel2.Controls.Add(UserInput);
+            splitContainer1.Size = new Size(988, 514);
+            splitContainer1.SplitterDistance = 421;
+            splitContainer1.TabIndex = 4;
+            // 
+            // splitContainer2
+            // 
+            splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.Location = new Point(0, 0);
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(splitContainer3);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(splitContainer4);
+            splitContainer2.Size = new Size(988, 421);
+            splitContainer2.SplitterDistance = 338;
+            splitContainer2.TabIndex = 0;
+            // 
+            // splitContainer3
+            // 
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Name = "splitContainer3";
+            splitContainer3.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            splitContainer3.Panel1.Controls.Add(button2);
+            // 
+            // splitContainer3.Panel2
+            // 
+            splitContainer3.Panel2.Controls.Add(Console);
+            splitContainer3.Panel2.Paint += splitContainer3_Panel2_Paint;
+            splitContainer3.Size = new Size(338, 421);
+            splitContainer3.SplitterDistance = 126;
+            splitContainer3.TabIndex = 0;
+            // 
+            // button2
+            // 
+            button2.Dock = DockStyle.Fill;
+            button2.Location = new Point(0, 0);
+            button2.Name = "button2";
+            button2.Size = new Size(338, 126);
+            button2.TabIndex = 0;
+            button2.Text = "LETS GOOOO!";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // Console
+            // 
+            Console.Dock = DockStyle.Fill;
+            Console.Location = new Point(0, 0);
+            Console.Name = "Console";
+            Console.Size = new Size(338, 291);
+            Console.TabIndex = 0;
+            Console.Text = "";
+            // 
+            // splitContainer4
+            // 
+            splitContainer4.Dock = DockStyle.Fill;
+            splitContainer4.Location = new Point(0, 0);
+            splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel2
+            // 
+            splitContainer4.Panel2.Controls.Add(OptionsTab);
+            splitContainer4.Size = new Size(646, 421);
+            splitContainer4.SplitterDistance = 309;
+            splitContainer4.TabIndex = 0;
+            // 
+            // OptionsTab
+            // 
+            OptionsTab.Controls.Add(tabPage1);
+            OptionsTab.Controls.Add(tabPage2);
+            OptionsTab.Dock = DockStyle.Fill;
+            OptionsTab.Location = new Point(0, 0);
+            OptionsTab.Name = "OptionsTab";
+            OptionsTab.SelectedIndex = 0;
+            OptionsTab.ShowToolTips = true;
+            OptionsTab.Size = new Size(333, 421);
+            OptionsTab.SizeMode = TabSizeMode.FillToRight;
+            OptionsTab.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(label5);
+            tabPage1.Controls.Add(Connect_Timeout);
+            tabPage1.Controls.Add(label4);
+            tabPage1.Controls.Add(API_Url);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(Api_Key);
+            tabPage1.Controls.Add(buttonSaveSettings);
+            tabPage1.Controls.Add(buttonLoadSettings);
+            tabPage1.Controls.Add(FilesDir);
+            tabPage1.Controls.Add(label3);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(ProjectName);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(325, 393);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Options";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label5.Location = new Point(18, 189);
+            label5.MaximumSize = new Size(244, 33);
+            label5.MinimumSize = new Size(244, 33);
+            label5.Name = "label5";
+            label5.Size = new Size(244, 33);
+            label5.TabIndex = 12;
+            label5.Text = "Connection Timeout in seconds. Defaults to 60. set to 60000 (An Hour) for local models to be safe.  ";
+            // 
+            // Connect_Timeout
+            // 
+            Connect_Timeout.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Connect_Timeout.Location = new Point(18, 225);
+            Connect_Timeout.MinimumSize = new Size(285, 23);
+            Connect_Timeout.Name = "Connect_Timeout";
+            Connect_Timeout.Size = new Size(285, 23);
+            Connect_Timeout.TabIndex = 11;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(18, 145);
+            label4.MinimumSize = new Size(232, 15);
+            label4.Name = "label4";
+            label4.Size = new Size(232, 15);
+            label4.TabIndex = 10;
+            label4.Text = "API Url. Include full url, including http(s)://";
+            // 
+            // API_Url
+            // 
+            API_Url.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            API_Url.Location = new Point(18, 163);
+            API_Url.MinimumSize = new Size(285, 23);
+            API_Url.Name = "API_Url";
+            API_Url.Size = new Size(285, 23);
+            API_Url.TabIndex = 9;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(18, 100);
+            label1.MinimumSize = new Size(47, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(47, 15);
+            label1.TabIndex = 8;
+            label1.Text = "API Key";
+            // 
+            // Api_Key
+            // 
+            Api_Key.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Api_Key.Location = new Point(18, 118);
+            Api_Key.MinimumSize = new Size(285, 23);
+            Api_Key.Name = "Api_Key";
+            Api_Key.Size = new Size(285, 23);
+            Api_Key.TabIndex = 7;
+            // 
+            // buttonSaveSettings
+            // 
+            buttonSaveSettings.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            buttonSaveSettings.Location = new Point(222, 336);
+            buttonSaveSettings.MaximumSize = new Size(81, 38);
+            buttonSaveSettings.MinimumSize = new Size(81, 38);
+            buttonSaveSettings.Name = "buttonSaveSettings";
+            buttonSaveSettings.Size = new Size(81, 38);
+            buttonSaveSettings.TabIndex = 6;
+            buttonSaveSettings.Text = "Save Settings";
+            buttonSaveSettings.UseVisualStyleBackColor = true;
+            buttonSaveSettings.Click += buttonSaveSettings_Click;
+            // 
+            // buttonLoadSettings
+            // 
+            buttonLoadSettings.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            buttonLoadSettings.Location = new Point(18, 336);
+            buttonLoadSettings.MaximumSize = new Size(81, 38);
+            buttonLoadSettings.MinimumSize = new Size(81, 38);
+            buttonLoadSettings.Name = "buttonLoadSettings";
+            buttonLoadSettings.Size = new Size(81, 38);
+            buttonLoadSettings.TabIndex = 5;
+            buttonLoadSettings.Text = "Load Settings";
+            buttonLoadSettings.UseVisualStyleBackColor = true;
+            buttonLoadSettings.Click += buttonLoadSettings_Click;
+            // 
+            // FilesDir
+            // 
+            FilesDir.Location = new Point(18, 29);
+            FilesDir.MinimumSize = new Size(285, 23);
+            FilesDir.Name = "FilesDir";
+            FilesDir.Size = new Size(285, 23);
+            FilesDir.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(18, 8);
+            label3.MinimumSize = new Size(229, 15);
+            label3.Name = "label3";
+            label3.Size = new Size(229, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Files Directory. Can be full path or relative.";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(18, 55);
+            label2.MinimumSize = new Size(79, 15);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Project Name";
+            label2.Click += label2_Click;
+            // 
+            // ProjectName
+            // 
+            ProjectName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ProjectName.Location = new Point(18, 73);
+            ProjectName.MinimumSize = new Size(285, 23);
+            ProjectName.Name = "ProjectName";
+            ProjectName.Size = new Size(285, 23);
+            ProjectName.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(325, 393);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Advanced Options";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button1.Dock = DockStyle.Right;
+            button1.Location = new Point(888, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 89);
+            button1.TabIndex = 1;
+            button1.Text = "Send";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // UserInput
+            // 
+            UserInput.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            UserInput.Location = new Point(3, 3);
+            UserInput.Name = "UserInput";
+            UserInput.Size = new Size(886, 91);
+            UserInput.TabIndex = 0;
+            UserInput.Text = "";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(988, 585);
+            Controls.Add(splitContainer1);
+            Controls.Add(toolStrip1);
+            Controls.Add(statusStrip1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Name = "Form1";
+            Text = "Form1";
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
+            splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer4).EndInit();
+            splitContainer4.ResumeLayout(false);
+            OptionsTab.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private MenuStrip menuStrip1;
+        private StatusStrip statusStrip1;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStrip toolStrip1;
+        private SplitContainer splitContainer1;
+        private SplitContainer splitContainer2;
+        private SplitContainer splitContainer3;
+        private SplitContainer splitContainer4;
+        private TabControl OptionsTab;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private Button button1;
+        private Button button2;
+        public RichTextBox Console;
+        private TextBox FilesDir;
+        public RichTextBox UserInput;
+        private Label label3;
+        private Label label2;
+        private TextBox ProjectName;
+        private Button buttonSaveSettings;
+        private Button buttonLoadSettings;
+        private Label label1;
+        private TextBox Api_Key;
+        private Label label4;
+        private TextBox API_Url;
+        private Label label5;
+        private TextBox Connect_Timeout;
+    }
+}

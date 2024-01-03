@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AutoCoder-UI": {
+      "commandName": "Project",
+      "commandLineArgs": "prompt.md"
+    }
+  }
+}
