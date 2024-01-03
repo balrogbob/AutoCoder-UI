@@ -202,7 +202,7 @@ namespace AutoCoder_UI
 
                     sharedDependencies = await GenerateResponse(
                         // Assistant Content
-                        @"You are an AI developer who is trying to write a program that will generate code for the user based on their intent.
+                        $@"You are an AI developer who is trying to write a program that will generate code for the user based on their intent.
                     
                     In response to the user's prompt:
             
