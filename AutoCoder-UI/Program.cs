@@ -42,7 +42,8 @@ namespace AutoCoder_UI
                 model = openai_model,
                 messages = messages,
                 max_tokens = openai_model_max_tokens,
-                temperature = 0
+                temperature = 0,
+                mirostat = 2
             };
 
             var client = new OpenAiClient(APIKEY);
@@ -81,7 +82,7 @@ namespace AutoCoder_UI
             Remember that you must obey 4 things: 
                - you are generating code for the file {filename}
                - do not stray from the names of the files and the shared dependencies we have decided on
-               - do not generate more than 10 of any given element. if more are needed, comment in the code asking the user to do so
+               - do not generate more than 40 of any given element per file. if more are needed, comment in the code asking the user to do so
                - MOST IMPORTANT OF ALL - the purpose of our app is {prompt} - every line of code you generate must be valid code. Do not include code fences in your response
             
            
@@ -93,13 +94,15 @@ namespace AutoCoder_UI
 
         private static void ReportTokens(string prompt)
         {
-            WriteToTextBox($"{prompt.Count()} tokens in prompt: {prompt.Substring(0, 50)}", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox($"{prompt.Count()} ", Color.DarkRed, new Font("Arial", 12, FontStyle.Bold), HorizontalAlignment.Left);
+            WriteToTextBox("tokens in prompt: ", Color.ForestGreen, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
+            WriteToTextBox($"{prompt.Substring(0, 100)}..." + Environment.NewLine, Color.ForestGreen, new Font("Arial", 10, FontStyle.Regular), HorizontalAlignment.Left);
         }
 
         private static void WriteFile(string filename, string filecode, string directory)
         {
-            WriteToTextBox("[" + filename + "]", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
-            WriteToTextBox(filecode, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox("[" + filename + "]" + Environment.NewLine, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Left);
+            WriteToTextBox(filecode + Environment.NewLine, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Left);
 
             var filePath = Path.Combine(directory, filename);
             var dir = Path.GetDirectoryName(filePath);
@@ -110,7 +113,7 @@ namespace AutoCoder_UI
 
         private static void CleanDirectory(string directory)
         {
-            var extensionsToSkip = new[] { ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".svg", ".ico", ".tif", ".tiff" };
+            var extensionsToSkip = new[] { ".ass" };
 
             if (Directory.Exists(directory))
             {
@@ -152,8 +155,12 @@ namespace AutoCoder_UI
                 prompt = File.ReadAllText(prompt);
             }
 
-            WriteToTextBox("hi its me, 🐣the smol developer🐣! you said you wanted:", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
-            WriteToTextBox(prompt, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox("hi its me, ", Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Center);
+            WriteToTextBox("🐣", Color.Red, new Font("Arial", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox("the smol developer", Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox("🐣" + Environment.NewLine, Color.Red, new Font("Arial", 12, FontStyle.Bold), HorizontalAlignment.Center);
+            WriteToTextBox("! you said you wanted: ", Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Center);
+            WriteToTextBox(prompt + Environment.NewLine, Color.Green, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
 
             var filepathsString = await GenerateResponse(
                 // Assistant content
@@ -163,9 +170,9 @@ namespace AutoCoder_UI
             
             only list the filepaths you would write, and return them without a leading slash as a json list of strings. 
 
-            Only include lines that have files. Directories should begin with generated\\.
+            Only include lines that have files. Directories should begin with AutoCoder\.
 
-            do not add any other explanation, or description, or label, only return a json list of strings ",
+            do not add any other explanation, or description, or label, only return a json list of strings",
                 // User Content
                 prompt
             );
@@ -173,8 +180,11 @@ namespace AutoCoder_UI
             var listActual = new List<string>();
             try
             {
+                WriteToTextBox("Raw Reply: ", Color.Purple, new Font("Arial", 12, FontStyle.Bold), HorizontalAlignment.Left);
+                WriteToTextBox(filepathsString + Environment.NewLine, Color.Red, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
                 string jsonContent = ExtractJsonContent(filepathsString);
-                WriteToTextBox(jsonContent, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+                WriteToTextBox("Json extracted Reply: ", Color.Purple, new Font("Arial", 12, FontStyle.Bold), HorizontalAlignment.Left);
+                WriteToTextBox(jsonContent + Environment.NewLine, Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
 
                 listActual = JsonSerializer.Deserialize<List<string>>(jsonContent);
 
@@ -186,7 +196,7 @@ namespace AutoCoder_UI
 
                 if (file != null)
                 {
-                    WriteToTextBox("file" + file, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+                    WriteToTextBox("file " + file + Environment.NewLine, Color.Yellow, new Font("Arial", 12, FontStyle.Bold), HorizontalAlignment.Left);
                     var (filename, filecode) = await GenerateFile(file, filepathsString, sharedDependencies, prompt);
                     WriteFile(filename, filecode, directory);
                 }
@@ -207,13 +217,14 @@ namespace AutoCoder_UI
                     the files we have decided to generate are: {filepathsString}
 
                     Now that we have a list of files, we need to understand what dependencies they share.
-                    Please name and briefly describe what is shared between the files we are generating, including _Layouts.cshtml files.
+                    Please name and briefly describe what is shared between the files we are generating, including _Layouts.cshtml files
+                    Make sure to list any needed or suggested libraries.
                     Exclusively focus on the names of the shared dependencies, and do not add any other explanation.",
                         // User Content
                         prompt
                     );
 
-                    WriteToTextBox(sharedDependencies, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+                    WriteToTextBox(sharedDependencies + Environment.NewLine, Color.Black, new Font("Times New Roman", 12, FontStyle.Regular), HorizontalAlignment.Center);
                     WriteFile("shared_dependencies.md", sharedDependencies, directory);
 
                     foreach (var f in listActual)
@@ -225,7 +236,7 @@ namespace AutoCoder_UI
             }
             catch (Exception ex)
             {
-                WriteToTextBox("Failed to parse result: " + ex.Message, Color.Black, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
+                WriteToTextBox("Failed to parse result: " + ex.Message + Environment.NewLine, Color.Red, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Center);
             }
         }
 

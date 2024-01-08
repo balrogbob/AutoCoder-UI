@@ -13,6 +13,9 @@ namespace AutoCoder_UI.lib
         public string Api_Key { get; set; }
         public string API_Url { get; set; }
         public string Connect_Timeout { get; set; }
+        public string StartTag { get; set; }
+        public string EndTag { get; set; }
+        public string SystemTag { get; set; }
         // Add more properties as needed
     }
 }

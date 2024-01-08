@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             menuStrip1 = new MenuStrip();
             statusStrip1 = new StatusStrip();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -39,12 +40,10 @@
             button2 = new Button();
             Console = new RichTextBox();
             splitContainer4 = new SplitContainer();
+            Debug = new RichTextBox();
             OptionsTab = new TabControl();
             tabPage1 = new TabPage();
-            label5 = new Label();
-            Connect_Timeout = new TextBox();
-            label4 = new Label();
-            API_Url = new TextBox();
+            Chat = new Button();
             label1 = new Label();
             Api_Key = new TextBox();
             buttonSaveSettings = new Button();
@@ -56,6 +55,19 @@
             tabPage2 = new TabPage();
             button1 = new Button();
             UserInput = new RichTextBox();
+            label5 = new Label();
+            Connect_Timeout = new TextBox();
+            label4 = new Label();
+            API_Url = new TextBox();
+            label6 = new Label();
+            textBox1 = new TextBox();
+            label7 = new Label();
+            textBox2 = new TextBox();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            toolStripButton1 = new ToolStripButton();
+            menuStrip1.SuspendLayout();
+            toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -69,14 +81,17 @@
             splitContainer3.Panel2.SuspendLayout();
             splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer4).BeginInit();
+            splitContainer4.Panel1.SuspendLayout();
             splitContainer4.Panel2.SuspendLayout();
             splitContainer4.SuspendLayout();
             OptionsTab.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(988, 24);
@@ -98,6 +113,7 @@
             // 
             // toolStrip1
             // 
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1 });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(988, 25);
@@ -185,12 +201,25 @@
             splitContainer4.Location = new Point(0, 0);
             splitContainer4.Name = "splitContainer4";
             // 
+            // splitContainer4.Panel1
+            // 
+            splitContainer4.Panel1.Controls.Add(Debug);
+            // 
             // splitContainer4.Panel2
             // 
             splitContainer4.Panel2.Controls.Add(OptionsTab);
             splitContainer4.Size = new Size(646, 421);
             splitContainer4.SplitterDistance = 309;
             splitContainer4.TabIndex = 0;
+            // 
+            // Debug
+            // 
+            Debug.Dock = DockStyle.Fill;
+            Debug.Location = new Point(0, 0);
+            Debug.Name = "Debug";
+            Debug.Size = new Size(309, 421);
+            Debug.TabIndex = 1;
+            Debug.Text = "";
             // 
             // OptionsTab
             // 
@@ -207,10 +236,7 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(label5);
-            tabPage1.Controls.Add(Connect_Timeout);
-            tabPage1.Controls.Add(label4);
-            tabPage1.Controls.Add(API_Url);
+            tabPage1.Controls.Add(Chat);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(Api_Key);
             tabPage1.Controls.Add(buttonSaveSettings);
@@ -227,44 +253,15 @@
             tabPage1.Text = "Options";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // Chat
             // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label5.Location = new Point(18, 189);
-            label5.MaximumSize = new Size(244, 33);
-            label5.MinimumSize = new Size(244, 33);
-            label5.Name = "label5";
-            label5.Size = new Size(244, 33);
-            label5.TabIndex = 12;
-            label5.Text = "Connection Timeout in seconds. Defaults to 60. set to 60000 (An Hour) for local models to be safe.  ";
-            // 
-            // Connect_Timeout
-            // 
-            Connect_Timeout.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Connect_Timeout.Location = new Point(18, 225);
-            Connect_Timeout.MinimumSize = new Size(285, 23);
-            Connect_Timeout.Name = "Connect_Timeout";
-            Connect_Timeout.Size = new Size(285, 23);
-            Connect_Timeout.TabIndex = 11;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(18, 145);
-            label4.MinimumSize = new Size(232, 15);
-            label4.Name = "label4";
-            label4.Size = new Size(232, 15);
-            label4.TabIndex = 10;
-            label4.Text = "API Url. Include full url, including http(s)://";
-            // 
-            // API_Url
-            // 
-            API_Url.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            API_Url.Location = new Point(18, 163);
-            API_Url.MinimumSize = new Size(285, 23);
-            API_Url.Name = "API_Url";
-            API_Url.Size = new Size(285, 23);
-            API_Url.TabIndex = 9;
+            Chat.Location = new Point(141, 335);
+            Chat.Name = "Chat";
+            Chat.Size = new Size(75, 23);
+            Chat.TabIndex = 13;
+            Chat.Text = "Chat";
+            Chat.UseVisualStyleBackColor = true;
+            Chat.Click += Chat_Click;
             // 
             // label1
             // 
@@ -351,6 +348,14 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(label6);
+            tabPage2.Controls.Add(textBox1);
+            tabPage2.Controls.Add(label7);
+            tabPage2.Controls.Add(textBox2);
+            tabPage2.Controls.Add(label5);
+            tabPage2.Controls.Add(Connect_Timeout);
+            tabPage2.Controls.Add(label4);
+            tabPage2.Controls.Add(API_Url);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -369,6 +374,7 @@
             button1.TabIndex = 1;
             button1.Text = "Send";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // UserInput
             // 
@@ -378,6 +384,108 @@
             UserInput.Size = new Size(886, 91);
             UserInput.TabIndex = 0;
             UserInput.Text = "";
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label5.Location = new Point(20, 168);
+            label5.MaximumSize = new Size(244, 33);
+            label5.MinimumSize = new Size(244, 33);
+            label5.Name = "label5";
+            label5.Size = new Size(244, 33);
+            label5.TabIndex = 16;
+            label5.Text = "Connection Timeout in seconds. Defaults to 60. set to 60000 (An Hour) for local models to be safe.  ";
+            // 
+            // Connect_Timeout
+            // 
+            Connect_Timeout.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Connect_Timeout.Location = new Point(20, 204);
+            Connect_Timeout.MinimumSize = new Size(285, 23);
+            Connect_Timeout.Name = "Connect_Timeout";
+            Connect_Timeout.Size = new Size(285, 23);
+            Connect_Timeout.TabIndex = 15;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(20, 124);
+            label4.MinimumSize = new Size(232, 15);
+            label4.Name = "label4";
+            label4.Size = new Size(232, 15);
+            label4.TabIndex = 14;
+            label4.Text = "API URL";
+            // 
+            // API_Url
+            // 
+            API_Url.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            API_Url.Location = new Point(20, 142);
+            API_Url.MinimumSize = new Size(285, 23);
+            API_Url.Name = "API_Url";
+            API_Url.Size = new Size(285, 23);
+            API_Url.TabIndex = 13;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label6.Location = new Point(20, 79);
+            label6.MaximumSize = new Size(244, 15);
+            label6.MinimumSize = new Size(244, 15);
+            label6.Name = "label6";
+            label6.Size = new Size(244, 15);
+            label6.TabIndex = 20;
+            label6.Text = "End Tag";
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(20, 97);
+            textBox1.MinimumSize = new Size(285, 23);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(285, 23);
+            textBox1.TabIndex = 19;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(20, 33);
+            label7.MinimumSize = new Size(232, 15);
+            label7.Name = "label7";
+            label7.Size = new Size(232, 15);
+            label7.TabIndex = 18;
+            label7.Text = "Start Tag";
+            // 
+            // textBox2
+            // 
+            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Location = new Point(20, 51);
+            textBox2.MinimumSize = new Size(285, 23);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(285, 23);
+            textBox2.TabIndex = 17;
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(37, 20);
+            fileToolStripMenuItem.Text = "File";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(180, 22);
+            toolStripMenuItem1.Text = "Exit";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(23, 22);
+            toolStripButton1.Text = "toolStripButton1";
+            toolStripButton1.Click += toolStripButton1_Click;
             // 
             // Form1
             // 
@@ -391,6 +499,10 @@
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Form1";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -403,12 +515,15 @@
             splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
             splitContainer3.ResumeLayout(false);
+            splitContainer4.Panel1.ResumeLayout(false);
             splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer4).EndInit();
             splitContainer4.ResumeLayout(false);
             OptionsTab.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -438,9 +553,18 @@
         private Button buttonLoadSettings;
         private Label label1;
         private TextBox Api_Key;
-        private Label label4;
-        private TextBox API_Url;
+        private Button Chat;
+        public RichTextBox Debug;
+        private Label label6;
+        private TextBox textBox1;
+        private Label label7;
+        private TextBox textBox2;
         private Label label5;
         private TextBox Connect_Timeout;
+        private Label label4;
+        private TextBox API_Url;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripButton toolStripButton1;
     }
 }

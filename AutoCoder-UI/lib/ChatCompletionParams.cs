@@ -7,5 +7,6 @@
         public int max_tokens { get; set; }
 
         public int temperature { get; set; }
+        public int mirostat { get; set; }
     }
 }

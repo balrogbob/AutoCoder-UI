@@ -36,6 +36,12 @@ namespace AutoCoder_UI.lib
                                 return loadedSettings.Api_Key;
                             case "API_Url":
                                 return loadedSettings.API_Url;
+                            case "StartTag":
+                                return loadedSettings.StartTag;
+                            case "endTag":
+                                return loadedSettings.EndTag;
+                            case "SystemTag":
+                                return loadedSettings.SystemTag;
 
                             default:
                                 throw new ArgumentException($"The provided setting name '{settingName}' is not valid.");

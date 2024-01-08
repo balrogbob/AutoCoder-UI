@@ -19,7 +19,7 @@ namespace AutoCoder_UI.lib
         internal async Task<Response> CallChatCompletionAsync(ChatCompletionParams parameters)
         {
 
-            string url = "https://iconofgaming.com:5000/v1/chat/completions/";
+            string url = "http://localhost:1234/v1/chat/completions/";
 
             var requestJson = JsonSerializer.Serialize(parameters);
 
