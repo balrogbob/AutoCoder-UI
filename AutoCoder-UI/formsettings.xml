@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FilesDir>src</FilesDir>
+  <ProjectName>MediaBob</ProjectName>
+  <Api_Key>nk-test</Api_Key>
+  <API_Url>https://iconofgaming.com:5000/v1/chat/completions/</API_Url>
+  <Connect_Timeout>60000</Connect_Timeout>
+</FormSettings>
