@@ -43,7 +43,7 @@ namespace AutoCoder_UI
                 messages = messages,
                 max_tokens = openai_model_max_tokens,
                 temperature = 1,
-                repeat_penalty = 1,
+                repeat_penalty = 1.1,
                 mirostat = 0,
                 min_p = 0.02,
                 top_p = 0,
