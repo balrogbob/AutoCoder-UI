@@ -8,6 +8,7 @@ using OpenAI.ChatGpt;
 using OpenAI.ChatGpt.Models.ChatCompletion.Messaging;
 using System.Drawing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.Windows.Forms.VisualStyles;
 
 namespace AutoCoder_UI
 {
@@ -306,15 +307,24 @@ namespace AutoCoder_UI
             histor = histor + user;
             Debug.Clear();
             SetTextBoxValueDebug("<|im_start|>", Color.DarkBlue, new Font("Arial", 10, FontStyle.Regular), HorizontalAlignment.Left);
-            //Thread.Sleep(2000);
             SetTextBoxValueDebug(boutput, Color.DarkBlue, new Font("Arial", 10, FontStyle.Regular), HorizontalAlignment.Left);
+            int tmpv = 0;
+            string chunks = "";
+            UserInput.Clear();
             await foreach (string chunk in _client.StreamChatCompletions(new SystemMessage(boutput), maxTokens: 2048))
             {
-                SetTextBoxValue(chunk, Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
+                tmpv += 1;
+                chunks += chunk;
+                if (tmpv == 4)
+                {
+                    SetTextBoxValue(chunks, Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
+                    chunks = "";
+                    tmpv = 0;
+                }
+                // SetTextBoxValue(chunk, Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
                 histor += chunk;
             }
             SetTextBoxValue(Environment.NewLine, Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
-            //history.Add(new { role = "assistant", content = histor });
             histor += "<|im_end|>";
         }
 
