@@ -6,7 +6,10 @@
         public List<Message> messages { get; set; }
         public int max_tokens { get; set; }
 
-        public int temperature { get; set; }
+        public Double temperature { get; set; }
         public int mirostat { get; set; }
+        public Double repeat_penalty { get; set; }
+        public Double min_p { get; set; }
+        public Double top_p { get; set; }
     }
 }

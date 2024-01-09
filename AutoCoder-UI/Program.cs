@@ -14,7 +14,7 @@ namespace AutoCoder_UI
         static string APIKEY = "sk-nokey";
         const string generatedDir = "generated"; // generators folder of files, for me it's smol-ai-dotnet\bin\Debug\net7.0\generated
         const string openai_model = "gpt-4-1106-preview"; // or 'gpt-4'
-        const int openai_model_max_tokens = 4096;
+        const int openai_model_max_tokens = 32384;
 
         public static async Task<string> GenerateResponse(string systemPrompt, string userPrompt, params string[] args)
         {
@@ -42,8 +42,11 @@ namespace AutoCoder_UI
                 model = openai_model,
                 messages = messages,
                 max_tokens = openai_model_max_tokens,
-                temperature = 0,
-                mirostat = 2
+                temperature = 0.7,
+                repeat_penalty = 1,
+                mirostat = 0,
+                min_p = 0.2,
+                top_p = 0.9
             };
 
             var client = new OpenAiClient(APIKEY);
@@ -82,7 +85,7 @@ namespace AutoCoder_UI
             Remember that you must obey 4 things: 
                - you are generating code for the file {filename}
                - do not stray from the names of the files and the shared dependencies we have decided on
-               - do not generate more than 40 of any given element per file. if more are needed, comment in the code asking the user to do so
+               - do not repeat code or variable names
                - MOST IMPORTANT OF ALL - the purpose of our app is {prompt} - every line of code you generate must be valid code. Do not include code fences in your response
             
            

@@ -19,13 +19,13 @@ namespace AutoCoder_UI
         public Form3()
         {
             InitializeComponent();
-            _client = new OpenAiClient("{YOUR_OPENAI_API_KEY}", "http://localhost:5001/v1/");
+            _client = new OpenAiClient("{YOUR_OPENAI_API_KEY}", "http://localhost:1234/v1/");
         }
 
         private async void send_Click(object sender, EventArgs e)
         {
             string text = uinput.Text;
-            await foreach (string chunk in _client.StreamChatCompletions(new UserMessage(text), maxTokens: 80))
+            await foreach (string chunk in _client.StreamChatCompletions(new UserMessage("<|im_start|>user" + Environment.NewLine + text + "<|im_end|><|im_start|>assistant" + Environment.NewLine), maxTokens: 80))
             {
                 output.Text += chunk;
             }
