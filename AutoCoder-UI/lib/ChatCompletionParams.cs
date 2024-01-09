@@ -11,5 +11,6 @@
         public Double repeat_penalty { get; set; }
         public Double min_p { get; set; }
         public Double top_p { get; set; }
+        public Double top_k { get; set; }
     }
 }
