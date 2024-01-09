@@ -42,16 +42,16 @@ namespace AutoCoder_UI
                 model = openai_model,
                 messages = messages,
                 max_tokens = openai_model_max_tokens,
-                temperature = 1,
+                temperature = 0.8,
                 repeat_penalty = 1.1,
                 mirostat = 0,
                 min_p = 0.02,
-                top_p = 0,
+                top_p = 0.95,
                 top_k = 0
             };
 
-            var client = new OpenAiClient(APIKEY);
-            Response response = await client.CallChatCompletionAsync(parameters);
+            var client = new OpenAiClient(apiKey: SerializationHelper.LoadSingleSettingFromXMLFile("Api_Key"));
+            Response response = await client.CallChatCompletionAsync(parameters: parameters, API_URL: SerializationHelper.LoadSingleSettingFromXMLFile("API_Url"));
 
             if (response.error is Error error)
             {

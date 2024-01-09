@@ -16,7 +16,7 @@ namespace AutoCoder_UI.lib
         }
     
 
-        internal async Task<Response> CallChatCompletionAsync(ChatCompletionParams parameters)
+        internal async Task<Response> CallChatCompletionAsync(ChatCompletionParams parameters, string API_URL)
         {
 
             string url = "http://localhost:1234/v1/chat/completions/";
@@ -25,7 +25,7 @@ namespace AutoCoder_UI.lib
 
             var requestContent = new StringContent(requestJson, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync(url, requestContent);
+            var response = await _httpClient.PostAsync(API_URL, requestContent);
 
             if (await response.Content.ReadAsStringAsync() is string responseJson)
             {
