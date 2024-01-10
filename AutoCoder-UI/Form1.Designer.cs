@@ -31,9 +31,14 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             menuStrip1 = new MenuStrip();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            helpToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem2 = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             contextMenuStrip1 = new ContextMenuStrip(components);
             toolStrip1 = new ToolStrip();
+            toolStripButton1 = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             splitContainer2 = new SplitContainer();
             splitContainer3 = new SplitContainer();
@@ -53,19 +58,16 @@
             label2 = new Label();
             ProjectName = new TextBox();
             tabPage2 = new TabPage();
-            button1 = new Button();
-            UserInput = new RichTextBox();
-            label5 = new Label();
-            Connect_Timeout = new TextBox();
-            label4 = new Label();
-            API_Url = new TextBox();
             label6 = new Label();
             textBox1 = new TextBox();
             label7 = new Label();
             textBox2 = new TextBox();
-            fileToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripButton1 = new ToolStripButton();
+            label5 = new Label();
+            Connect_Timeout = new TextBox();
+            label4 = new Label();
+            API_Url = new TextBox();
+            button1 = new Button();
+            UserInput = new RichTextBox();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -91,12 +93,40 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(988, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(37, 20);
+            fileToolStripMenuItem.Text = "File";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(93, 22);
+            toolStripMenuItem1.Text = "Exit";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
+            // 
+            // helpToolStripMenuItem
+            // 
+            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem2 });
+            helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            helpToolStripMenuItem.Size = new Size(122, 20);
+            helpToolStripMenuItem.Text = "Help";
+            // 
+            // toolStripMenuItem2
+            // 
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(180, 22);
+            toolStripMenuItem2.Text = "About";
+            toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
             // statusStrip1
             // 
@@ -119,6 +149,16 @@
             toolStrip1.Size = new Size(988, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(23, 22);
+            toolStripButton1.Text = "toolStripButton1";
+            toolStripButton1.Click += toolStripButton1_Click;
             // 
             // splitContainer1
             // 
@@ -364,26 +404,44 @@
             tabPage2.Text = "Advanced Options";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // label6
             // 
-            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button1.Dock = DockStyle.Right;
-            button1.Location = new Point(888, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(100, 89);
-            button1.TabIndex = 1;
-            button1.Text = "Send";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label6.Location = new Point(20, 79);
+            label6.MaximumSize = new Size(244, 15);
+            label6.MinimumSize = new Size(244, 15);
+            label6.Name = "label6";
+            label6.Size = new Size(244, 15);
+            label6.TabIndex = 20;
+            label6.Text = "End Tag";
             // 
-            // UserInput
+            // textBox1
             // 
-            UserInput.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            UserInput.Location = new Point(3, 3);
-            UserInput.Name = "UserInput";
-            UserInput.Size = new Size(886, 91);
-            UserInput.TabIndex = 0;
-            UserInput.Text = "";
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(20, 97);
+            textBox1.MinimumSize = new Size(285, 23);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(285, 23);
+            textBox1.TabIndex = 19;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(20, 33);
+            label7.MinimumSize = new Size(232, 15);
+            label7.Name = "label7";
+            label7.Size = new Size(232, 15);
+            label7.TabIndex = 18;
+            label7.Text = "Start Tag";
+            // 
+            // textBox2
+            // 
+            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            textBox2.Location = new Point(20, 51);
+            textBox2.MinimumSize = new Size(285, 23);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(285, 23);
+            textBox2.TabIndex = 17;
             // 
             // label5
             // 
@@ -424,68 +482,26 @@
             API_Url.Size = new Size(285, 23);
             API_Url.TabIndex = 13;
             // 
-            // label6
+            // button1
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label6.Location = new Point(20, 79);
-            label6.MaximumSize = new Size(244, 15);
-            label6.MinimumSize = new Size(244, 15);
-            label6.Name = "label6";
-            label6.Size = new Size(244, 15);
-            label6.TabIndex = 20;
-            label6.Text = "End Tag";
+            button1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            button1.Dock = DockStyle.Right;
+            button1.Location = new Point(888, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 89);
+            button1.TabIndex = 1;
+            button1.Text = "Send";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
-            // textBox1
+            // UserInput
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(20, 97);
-            textBox1.MinimumSize = new Size(285, 23);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(285, 23);
-            textBox1.TabIndex = 19;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(20, 33);
-            label7.MinimumSize = new Size(232, 15);
-            label7.Name = "label7";
-            label7.Size = new Size(232, 15);
-            label7.TabIndex = 18;
-            label7.Text = "Start Tag";
-            // 
-            // textBox2
-            // 
-            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBox2.Location = new Point(20, 51);
-            textBox2.MinimumSize = new Size(285, 23);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(285, 23);
-            textBox2.TabIndex = 17;
-            // 
-            // fileToolStripMenuItem
-            // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
-            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(37, 20);
-            fileToolStripMenuItem.Text = "File";
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(180, 22);
-            toolStripMenuItem1.Text = "Exit";
-            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
-            // 
-            // toolStripButton1
-            // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(23, 22);
-            toolStripButton1.Text = "toolStripButton1";
-            toolStripButton1.Click += toolStripButton1_Click;
+            UserInput.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            UserInput.Location = new Point(3, 3);
+            UserInput.Name = "UserInput";
+            UserInput.Size = new Size(886, 91);
+            UserInput.TabIndex = 0;
+            UserInput.Text = "";
             // 
             // Form1
             // 
@@ -566,5 +582,7 @@
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripButton toolStripButton1;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem2;
     }
 }

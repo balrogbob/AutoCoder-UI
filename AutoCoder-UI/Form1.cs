@@ -17,7 +17,6 @@ namespace AutoCoder_UI
         public static Form? Instance;
         private OpenAI.ChatGpt.OpenAiClient _client;
         private string histor = "";
-        private bool dial = false;
         public void SetTextBoxValue(string value, Color color, Font font, HorizontalAlignment alignment)
         {
             RichTextBox richTextBox = (RichTextBox)Console;
@@ -307,18 +306,11 @@ namespace AutoCoder_UI
             Debug.Clear();
             SetTextBoxValueDebug("<|im_start|>", Color.DarkBlue, new Font("Arial", 10, FontStyle.Regular), HorizontalAlignment.Left);
             SetTextBoxValueDebug(boutput, Color.DarkBlue, new Font("Arial", 10, FontStyle.Regular), HorizontalAlignment.Left);
-            int tmpv = 0;
-            string chunks = "";
             UserInput.Clear();
             await foreach (string chunk in _client.StreamChatCompletions(new SystemMessage(boutput), maxTokens: 2048))
-            {
-                tmpv += 1;
-                chunks += chunk;
-                if (tmpv == 4)
+            {             
                 {
-                    SetTextBoxValue(chunks, Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
-                    chunks = "";
-                    tmpv = 0;
+                    SetTextBoxValue(chunk, Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
                 }
                 // SetTextBoxValue(chunk, Color.Black, new Font("Arial", 12, FontStyle.Regular), HorizontalAlignment.Left);
                 histor += chunk;
@@ -335,6 +327,12 @@ namespace AutoCoder_UI
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutBox1 = new AboutBox1();
+            aboutBox1.ShowDialog();
         }
     }
 }

@@ -51,7 +51,7 @@ namespace AutoCoder_UI
             };
 
             var client = new OpenAiClient(apiKey: SerializationHelper.LoadSingleSettingFromXMLFile("Api_Key"));
-            Response response = await client.CallChatCompletionAsync(parameters: parameters, API_URL: SerializationHelper.LoadSingleSettingFromXMLFile("API_Url"));
+            Response response = await client.CallChatCompletionAsync(parameters, SerializationHelper.LoadSingleSettingFromXMLFile("API_Url"));
 
             if (response.error is Error error)
             {
