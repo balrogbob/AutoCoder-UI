@@ -118,13 +118,13 @@
             // 
             helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem2 });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(122, 20);
+            helpToolStripMenuItem.Size = new Size(44, 20);
             helpToolStripMenuItem.Text = "Help";
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(180, 22);
+            toolStripMenuItem2.Size = new Size(107, 22);
             toolStripMenuItem2.Text = "About";
             toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
@@ -222,7 +222,7 @@
             button2.Name = "button2";
             button2.Size = new Size(338, 126);
             button2.TabIndex = 0;
-            button2.Text = "LETS GOOOO!";
+            button2.Text = "Press for AutoGen. Type your prompt into the input box below, or edit the prompt.md file. Leave the input box empty to use prompt.md";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 

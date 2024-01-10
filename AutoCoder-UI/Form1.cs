@@ -92,47 +92,52 @@ namespace AutoCoder_UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            string prompt = "prompt.md";
+            string? prompt = UserInput.Text;
             string newFilePath;
-
-            try
-            {
-                prompt = File.ReadAllText(prompt);
-            }
-            catch (FileNotFoundException ex)
-            {
-
-
-                prompt = UserInput.Text;
-                SetTextBoxValue($"The file '{ex.FileName}' does not exist. Please create the file and try again." + Environment.NewLine, Color.Red, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Left);
-
-                DialogResult result = MessageBox.Show("The file does not exist.\n\nPlease choose a file to read from.", "Error", MessageBoxButtons.AbortRetryIgnore);
-
-                switch (result)
+            if (prompt == "") {
+            prompt = "prompt.md";
+                try
                 {
-                    case DialogResult.Abort:
-                        Environment.Exit(0);
-                        break;
-                    case DialogResult.Retry:
-                        newFilePath = GetFileName();
+                    prompt = File.ReadAllText(prompt);
+                }
+                catch (FileNotFoundException ex)
+                {
 
-                        if (!string.IsNullOrEmpty(newFilePath))
-                        {
-                            prompt = File.ReadAllText(newFilePath);
-                        }
-                        else
-                        {
-                            SetTextBoxValue("No file was selected." + Environment.NewLine, Color.Black, new Font("Times New Roman", 12, FontStyle.Regular), HorizontalAlignment.Left);
-                        }
-                        return;
-                    case DialogResult.Ignore:
 
-                        SetTextBoxValue("Please provide the initial prompt as the first argument into the text box below, or create a prompt.md file in the same directory as the executable." + Environment.NewLine, Color.Black, new Font("Times New Roman", 12, FontStyle.Regular), HorizontalAlignment.Left);
-                        return;
+                    prompt = UserInput.Text;
+                    SetTextBoxValue($"The file '{ex.FileName}' does not exist. Please create the file and try again." + Environment.NewLine, Color.Red, new Font("Times New Roman", 12, FontStyle.Bold), HorizontalAlignment.Left);
+
+                    DialogResult result = MessageBox.Show("The file does not exist.\n\nPlease choose a file to read from.", "Error", MessageBoxButtons.AbortRetryIgnore);
+
+                    switch (result)
+                    {
+                        case DialogResult.Abort:
+                            Environment.Exit(0);
+                            break;
+                        case DialogResult.Retry:
+                            newFilePath = GetFileName();
+
+                            if (!string.IsNullOrEmpty(newFilePath))
+                            {
+                                prompt = File.ReadAllText(newFilePath);
+                            }
+                            else
+                            {
+                                SetTextBoxValue("No file was selected." + Environment.NewLine, Color.Black, new Font("Times New Roman", 12, FontStyle.Regular), HorizontalAlignment.Left);
+                            }
+                            return;
+                        case DialogResult.Ignore:
+
+                            SetTextBoxValue("Please provide the initial prompt as the first argument into the text box below, or create a prompt.md file in the same directory as the executable." + Environment.NewLine, Color.Black, new Font("Times New Roman", 12, FontStyle.Regular), HorizontalAlignment.Left);
+                            return;
+                    }
+
                 }
 
             }
+            
+
+            
             if (UserInput.Text.Length != 0)
             {
                 prompt = UserInput.Text;
