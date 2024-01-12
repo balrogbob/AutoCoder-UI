@@ -22,5 +22,5 @@ Edit the prompt.md file with your prompt and watch as the smol developer backend
 
 It can take quite some time to get a response in autogen mode, that's normal as there is no token streaming in this mode.
 
-Currently, you need a openai compatible local model or openai proxy server set up on port 1234 to use it. If you have visual studio and a couple of minutes, you can edit the api-keys and urls that are still hardcoded and re-compile. All those things will be saved as a setting in a future version.
+Currently, by default you need a openai compatible local model or openai proxy server set up on port 1234 to use it. You can now change those settings in the app for the autogen feature only. Still need the proxie for streaming chat for now) If you have visual studio and a couple of minutes, you can edit the api-keys and urls that are still hardcoded and re-compile. All those things will be saved as a setting in a future version.
 
