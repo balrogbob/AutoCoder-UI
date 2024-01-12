@@ -18,7 +18,7 @@ Settings and global variables are saved and loaded from XML files. Some properti
 
 Enter text into the bottom text box and it send to chat in realtime!
 
-Edit the readme.md file with your prompt and watch as the smol developer backend goes to work! (What's left, I had to tear it apart quite a bit to get it to work as a Windows GUI app :)
+Edit the prompt.md file with your prompt and watch as the smol developer backend goes to work! (What's left, I had to tear it apart quite a bit to get it to work as a Windows GUI app :)
 
 It can take quite some time to get a response in autogen mode, that's normal as there is no token streaming in this mode.
 
