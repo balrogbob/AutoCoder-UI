@@ -2,7 +2,11 @@
 
 Not much to say yet, really. It works. It works VERY well with mixtral models.
 
+<<<<<<< HEAD
 ### 🔥 ime Capsule / Historical Flex
+=======
+### 🔥 Time Capsule / Historical Flex
+>>>>>>> 558dfd1 (fixed typo)
 
 **Yes, I invented the Ralph Loop before it had a name.**
 
