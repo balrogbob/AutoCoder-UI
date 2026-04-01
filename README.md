@@ -2,6 +2,41 @@
 
 Not much to say yet, really. It works. It works VERY well with mixtral models.
 
+### 🔥 ime Capsule / Historical Flex
+
+**Yes, I invented the Ralph Loop before it had a name.**
+
+This was my very first GitHub project (back when C# still felt tolerable).
+
+Before tool calling existed.  
+Before models were trained to use functions.  
+Before Claude Code, Cursor, Aider, or any modern agent scaffolding.
+
+I built a complete desktop agent harness that could:
+
+- Run in full **auto-generation mode**
+- Take a high-level `prompt.md` + a list of desired files
+- Iteratively write an entire project by repeatedly feeding the model the current state of the filesystem
+- Use the AI to improve the harness itself (self-referential bootstrapping, baby)
+
+It was basically a **Ralph Loop** implemented the hard way, no fancy plugins, no stop hooks, no ReAct. Just raw prompting + persistent file state + a relentless outer loop.
+
+I was doing this **3 years before** the "Ralph Wiggum Loop" became a thing in 2026.
+
+Looking back, the code is gloriously janky (hardcoded paths, manual ChatML formatting, requires recompilation for some changes, etc.). But the core idea was there: let the model live in a persistent workspace and keep hammering the same goal until the project is done.
+
+This project is the spiritual ancestor of everything I build now:
+- **faCtMCP**: the tiny native C/C++ MCP backbone
+- **editorMCP**: the 5.2 MB RAM editor with live editing <- in progress
+- The upcoming **C++ just-bash + CerebroShell live terminal** <- almost in progress, editorMCP and faCtMCP are ready!
+
+I eventually got fed up with C# ("fuck this language") and rewrote everything in proper C/C++, but this ugly little time capsule proves I was chasing the same vision the whole time:
+
+**Make the AI help me build better AI tooling, damnit!**
+
+So yeah… I was early.  
+Really fucking early.
+
 ChatML is currently hardcoded in for the chat feature, so its mostly targeted at openai use, but its configured by default to connect to a local server. LM Studio works well for this purpose. The initial tag is left off, and the whole blob is sent as the pre-prompt. With the baked in tags, it just works, with openai or Local models that auto-add the prompt format (Most do, or have an option to)
 
 There are several good models that use chatml, and it was chosen as the model I use personally is dolphin-mixtral. It is the best at coding of any other model I've tested, even 70b llama-2 based ones. Only chatGPT-4 is better at coding.
